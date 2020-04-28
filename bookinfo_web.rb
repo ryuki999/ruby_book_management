@@ -37,8 +37,8 @@ server.mount_proc("/list") { |req, res|
   p req.query
   # 'operation'の値の後の（.delete, .edit）で処理を分岐する
   if /(.*)\.(delete|edit)$/ =~ req.query['operation']
-    target_id = $1
-    operation = $2
+    target_id = $1 # (.*)にマッチした部分
+    operation = $2 # (delete|edit)にマッチした部分
     # 選択された処理を実行する画面に移行する
     # ERBを、ERBHandlerを経由せずに直接呼び出して利用している
     if operation == 'delete'
@@ -123,7 +123,7 @@ server.mount_proc("/retrieve") { |req, res|
 server.mount_proc("/edit") { |req, res|
   # （注意）本来ならここで入力データに危険や
   # 不正がないかチェックするが、演習の見通しに割愛している
-  p req.query
+  p req.query # 引き渡されたリクエストの中のフォームデータを確認するためのデバッグ用
   #dbhを作成し、データベース'bookinfo_sqlite.db'に接続する
   dbh = DBI.connect( 'DBI:SQLite3:bookinfo_sqlite.db' )
   # テーブルのデータを更新する（長いので折り返している）
