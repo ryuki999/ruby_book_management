@@ -1,3 +1,5 @@
+/* bootstrap.css上書き用 */
+
 body{
     background-color:  #fff8dc;
 }
@@ -36,7 +38,7 @@ h3 {
 
 table {
     border-width : 1px,2px,2px,1px;
-    border-type : solid;
+    border : solid;
     border-color : gray;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -45,7 +47,7 @@ table {
 
 th, td {
     border-width : 1px,0px,0px,1px;
-    border-type : solid;
+    border : solid;
     border-color : gray;
     padding : 4px;
     background-color : #ffffef;
@@ -59,4 +61,8 @@ th {
 
 #book_list {
     width: 1000px;
+}
+
+.fa-arrow-alt-circle-up {
+    color: red;
 }

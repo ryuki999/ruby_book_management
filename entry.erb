@@ -28,10 +28,15 @@
           <th>項目名</th>
           <th>入力データ</th>
         </tr>
-        <% ['id','title','author','page','publish_date'].each do |name| %>
+        <% ['id','title','author','page','publish_date','image_url'].each do |name| %>
         <tr>
-          <td><%= name %></td>
+        <%if name == 'id' then%>
+          <td><%= name %>
+          <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" required="required"></td>
+        <% else %>
+          <td><%= name %></>
           <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" /></td>
+        <% end %>
         </tr>
         <% end %>
       </table>

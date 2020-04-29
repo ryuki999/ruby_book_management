@@ -77,7 +77,7 @@ server.mount_proc("/entry") { |req, res|
     dbh.do("insert into bookinfos \
       values('#{req.query['id']}','#{req.query['title']}',\
       '#{req.query['author']}','#{req.query['page']}',\
-      '#{req.query['publish_date']}');")
+      '#{req.query['publish_date']}','#{req.query['image_url']}');")
     
     # データベースとの接続を終了する %>
     dbh.disconnect

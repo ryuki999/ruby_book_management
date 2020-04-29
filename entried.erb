@@ -20,7 +20,7 @@
   <table>
     <th>項目名</th>
     <th>登録データ</th>
-    <% ['id','title','author','page','publish_date'].each do |name| %>
+    <% ['id','title','author','page','publish_date','image_url'].each do |name| %>
     <tr>
       <td><%= name %></td>
       <td><%= req.query[name].force_encoding("UTF-8") %></td>

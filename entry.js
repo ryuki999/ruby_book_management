@@ -10,11 +10,20 @@ $(document).on('click', '.img-thumbnail', function () {
     if (data.items[i].id === id) {
       // 該当書籍が存在した場合、JSONから値を取得して入力項目のデータを取得する
       console.log(id);
-      $('#id').val('');
       $('#title').val(data.items[i].volumeInfo.title);
       $('#author').val(data.items[i].volumeInfo.authors[0]);
       $('#page').val(data.items[i].volumeInfo.pageCount);
       $('#publish_date').val(data.items[i].volumeInfo.publishedDate);
+      if (
+        data.items[i].volumeInfo !== undefined &&
+        data.items[i].volumeInfo.imageLinks !== undefined &&
+        data.items[i].volumeInfo.imageLinks.smallThumbnail !== undefined
+      ) {
+        $('#image_url').val(data.items[i].volumeInfo.imageLinks.smallThumbnail);
+      } else {
+        $('#image_url').val('./image/no-image-icon.png');
+      }
+
     }
   }
 });
@@ -26,7 +35,7 @@ $(function () {
       img_list.removeChild(img_list.firstChild);
     }
     const isbn = $('#search_keyword').val();
-    const max_results = 20;
+    const max_results = 40;
     var index = '';
     const count = 1;
     for (var i = 0; i < count; i++) {
