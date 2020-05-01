@@ -89,3 +89,7 @@ th {
 .icon {
     text-align: center;
 }
+
+.input-group {
+    width:70%;
+}

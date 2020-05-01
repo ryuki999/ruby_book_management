@@ -18,33 +18,33 @@
     <!-- header.htmlをここに表示する -->
   </div>
   <div class="container">
+    <p><a href="list.erb">蔵書データの表示</a>｜
+      <a href="index.html">メニュー画面に戻る</a></>
 
-  <h2>蔵書データの検索</h2>
-  <p>検索条件を入力してください｜
-    <a href="list.erb">蔵書データの表示</a>｜
-    <a href="index.html">メニュー画面に戻る</a></p>
-  <hr>
+      <h2>蔵書データの検索</h2>
+      <p>検索条件を入力してください</p>
+      <hr>
 
-  <%# 登録対象データを入力するフォームを表示する アクションはretrieve %>
-  <form method="post" action="retrieve">
-    <table>
-      <tr>
-        <th>項目名</th>
-        <th>検索データ</th>
-      </tr>
-      <% ['id','title','author','page','publish_date'].each do |name| %>
-      <tr>
-        <td><%= name %></td>
-        <td><input type="text" name="<%=name%>" size="60" /></td>
-      </tr>
-      <% end %>
-    </table>
-    <input type="submit" value="検索を実行" />
-  </form>
+      <%# 登録対象データを入力するフォームを表示する アクションはretrieve %>
+      <form method="post" action="retrieve">
+        <table>
+          <tr>
+            <th>項目名</th>
+            <th>検索データ</th>
+          </tr>
+          <% ['id','title','author','page','publish_date'].each do |name| %>
+          <tr>
+            <td><%= name %></td>
+            <td><input type="text" name="<%=name%>" size="60" /></td>
+          </tr>
+          <% end %>
+        </table>
+        <input type="submit" value="検索を実行" />
+      </form>
 
-  <hr>
+      <hr>
   </div>
-    <div id="footer"></div>
+  <div id="footer"></div>
 </body>
 
 </html>

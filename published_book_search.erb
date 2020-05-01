@@ -1,0 +1,47 @@
+<%# -*- coding: utf-8 -*-%>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      // header.htmlとfooter.htmlをテンプレート化
+      $('#header').load('header.html');
+      $('#footer').load('footer.html');
+    });
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <div id="header"></div>
+    <!-- header.htmlをここに表示する -->
+  </div>
+  <div class="container">
+    <p><a href="entry.erb">蔵書データの登録</a>｜
+      <a href="list.erb">蔵書データの表示</a>｜
+      <a href="index.html">メニュー画面に戻る</a></p>
+    <h2>出版されている本の検索</h2>
+    <p>検索した本のキーワードを入力してください</p>
+    <hr>
+
+    <div class="input-group">
+      <input type="text" id="search_keyword" class="form-control" placeholder="ISBN・タイトル・著者名等">
+      <span class="input-group-btn">
+        <button type="button" id="search_button" class="btn btn-primary">検索</button>
+      </span>
+    </div>
+
+    <div id="book_list" class="row"></div>
+    <nav class="my-5">
+      <ul id="page" class="pagination justify-content-center">
+      </ul>
+    </nav>
+    <hr>
+  </div>
+
+  <div id="footer"></div>
+  <script type="text/javascript" src="published_book_search.js"></script>
+</body>
+
+</html>

@@ -18,24 +18,25 @@
     <!-- header.htmlをここに表示する -->
   </div>
   <div class="container">
-  <h2>蔵書データの削除</h2>
-  <p>下記の蔵書データを削除しました｜
-    <a href="list.erb">蔵書データの表示</a>｜
-    <a href="index.html">メニュー画面に戻る</a></p>
-  <hr>
-  <table>
-    <th>項目名</th>
-    <th>削除データ</th>
-    <% ['id','title','author','page','publish_date'].each do |name| %>
-    <tr>
-      <td><%= name %></td>
-      <td><%= req.query[name] %></td>
-    </tr>
-    <% end %>
-  </table>
-  <hr>
+    <p><a href="list.erb">蔵書データの表示</a>｜
+      <a href="index.html">メニュー画面に戻る</a></p>
+    <h2>蔵書データの削除</h2>
+    <p>下記の蔵書データを削除しました｜</p>
+
+    <hr>
+    <table>
+      <th>項目名</th>
+      <th>削除データ</th>
+      <% ['id','title','author','page','publish_date'].each do |name| %>
+      <tr>
+        <td><%= name %></td>
+        <td><%= req.query[name] %></td>
+      </tr>
+      <% end %>
+    </table>
+    <hr>
   </div>
-    <div id="footer"></div>
+  <div id="footer"></div>
 </body>
 
 </html>

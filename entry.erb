@@ -18,14 +18,12 @@
     <!-- header.htmlをここに表示する -->
   </div>
   <div class="container">
+    <p><a href="list.erb">蔵書データの表示</a>｜
+      <a href="index.html">メニュー画面に戻る</a></p>
+    <h2>蔵書データの登録</h2>
+    <p>登録データを入力してください</p>
 
-  <h2>蔵書データの登録</h2>
-  <p>登録データを入力してください｜
-    <a href="list.erb">蔵書データの表示</a>｜
-    <a href="index.html">メニュー画面に戻る</a></p>
-  <hr>
-
-  <div id="hand_entry">
+    <hr>
     <%# 登録対象データを入力するフォームを表示する アクションはentry %>
     <form method="post" action="entry">
       <table>
@@ -35,41 +33,24 @@
         </tr>
         <% ['id','title','author','page','publish_date','image_url'].each do |name| %>
         <tr>
-        <%if name == 'id' then%>
+          <%if name == 'id' then%>
           <td><%= name %>
           <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" required="required"></td>
-        <% else %>
+          <% else %>
           <td><%= name %></>
           <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" /></td>
-        <% end %>
+          <% end %>
         </tr>
         <% end %>
       </table>
       <input type="submit" value="登録を実行" />
     </form>
+
+    <hr>
+
   </div>
 
-  <hr>
-
-  <div id="search_entry">
-    <input type="hidden" id="data_hidden" value="">
-    <table>
-      <tr>
-        <th></th>
-        <th>入力データ</th>
-      </tr>
-      <tr>
-        <td>検索キーワード</td>
-        <td><input id="search_keyword" type="text" value="">
-        </td>
-      </tr>
-    </table>
-    <button id="search_button">検索</button>
-    <div id="book_list" class="row"></div>
-  </div>
-  </div>
-
-    <div id="footer"></div>
+  <div id="footer"></div>
   <script type="text/javascript" src="entry.js"></script>
 </body>
 

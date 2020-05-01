@@ -26,33 +26,34 @@
     <!-- header.htmlをここに表示する -->
   </div>
   <div class="container">
-  <h2>蔵書データの削除</h2>
-  <p>このデータを削除します｜
-    <a href="list.erb">蔵書データの表示</a>｜
-    <a href="index.html">メニュー画面に戻る</a></p>
-  <hr>
+    <p><a href="list.erb">蔵書データの表示</a>｜
+      <a href="index.html">メニュー画面に戻る</a></p>
+    <h2>蔵書データの削除</h2>
+    <p>このデータを削除します｜</p>
 
-  <%# 削除データを表示する アクションはdelete %>
-  <form method="post" action="delete">
-    <input type="hidden" name="id" value="<%= target_id %>" />
-    <table>
-      <%# select文の実行結果のidが指定されたデータを取り出し、繰り返し処理する %>
-      <th>項目名</th>
-      <th>削除データ</th>
-      <%# each_with_nameメソッドで値と項目名を1件分ずつ取り出して表示する %>
-      <%   row.each_with_name do |val, name| %>
-      <tr>
-        <td><%= name %></td>
-        <td><%= val.to_s %></td>
-        <input type="hidden" name="<%= name %>" value="<%= val %>" />
-      </tr>
-      <%   end %>
-    </table>
-    <input type="submit" value="削除を実行" />
-  </form>
-  <hr>
+    <hr>
+
+    <%# 削除データを表示する アクションはdelete %>
+    <form method="post" action="delete">
+      <input type="hidden" name="id" value="<%= target_id %>" />
+      <table>
+        <%# select文の実行結果のidが指定されたデータを取り出し、繰り返し処理する %>
+        <th>項目名</th>
+        <th>削除データ</th>
+        <%# each_with_nameメソッドで値と項目名を1件分ずつ取り出して表示する %>
+        <%   row.each_with_name do |val, name| %>
+        <tr>
+          <td><%= name %></td>
+          <td><%= val.to_s %></td>
+          <input type="hidden" name="<%= name %>" value="<%= val %>" />
+        </tr>
+        <%   end %>
+      </table>
+      <input type="submit" value="削除を実行" />
+    </form>
+    <hr>
   </div>
-    <div id="footer"></div>
+  <div id="footer"></div>
 </body>
 
 </html>

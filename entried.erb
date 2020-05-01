@@ -18,24 +18,24 @@
     <!-- header.htmlをここに表示する -->
   </div>
   <div class="container">
+    <p><a href="list.erb">蔵書データの表示</a>｜
+      <a href="index.html">メニュー画面に戻る</a></p>
+    <h2>蔵書データの登録</h2>
+    <p>下記の蔵書データを登録しました</p>
 
-  <h2>蔵書データの登録</h2>
-  <p>下記の蔵書データを登録しました｜
-    <a href="list.erb">蔵書データの表示</a>｜
-    <a href="index.html">メニュー画面に戻る</a></p>
-  <hr>
-  <table>
-    <th>項目名</th>
-    <th>登録データ</th>
-    <% ['id','title','author','page','publish_date','image_url'].each do |name| %>
-    <tr>
-      <td><%= name %></td>
-      <td><%= req.query[name].force_encoding("UTF-8") %></td>
-    </tr>
-    <% end %>
-  </table>
-  <hr>
+    <hr>
+    <table>
+      <th>項目名</th>
+      <th>登録データ</th>
+      <% ['id','title','author','page','publish_date','image_url'].each do |name| %>
+      <tr>
+        <td><%= name %></td>
+        <td><%= req.query[name].force_encoding("UTF-8") %></td>
+      </tr>
+      <% end %>
+    </table>
+    <hr>
   </div>
-    <div id="footer"></div>
+  <div id="footer"></div>
 
 </html>

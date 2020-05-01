@@ -26,49 +26,49 @@
     <!-- header.htmlをここに表示する -->
   </div>
   <div class="container">
+    <p><a href="entry.erb">蔵書データの登録</a>｜
+      <a href="retrieve.erb">蔵書データの検索</a>｜
+      <a href="index.html">メニュー画面に戻る</a></p>
+    <h2>蔵書データの表示</h2>
+    <p>処理する蔵書データを選択してください</p>
 
-  <h2>蔵書データの表示</h2>
-  <p>処理する蔵書データを選択してください｜
-    <a href="entry.erb">蔵書データの登録</a>｜
-    <a href="retrieve.erb">蔵書データの検索</a>｜
-    <a href="index.html">メニュー画面に戻る</a></p>
 
-  <hr>
-  <%# 修正データを表示する アクションはlist %>
-  <form method="post" action="list">
-    <table>
-      <%# テーブルの項目名を取り出して表の項目行を表示する %>
-      <tr>
-        <th>削除</th>
-        <th>修正</th>
-        <% sth.column_names.each do |name| %>
-        <th><%= "#{name}" %></th>
-        <% end %>
-      </tr>
-
-      <%# select文の実行結果を1件ずつrowに取り出し、繰り返し処理する %>
-      <% sth.each do |row| %>
-      <tr>
-        <%# each_with_nameメソッドで値と項目名を1件分ずつ取り出して表示する %>
-        <%   row.each_with_name do |val, name| %>
-        <%     if name == 'id' then %>
-        <%#    valueに選択したidの値の後に処理（.delete, .edit）を結合した文字列を設定する %>
-        <td><input type="radio" name="operation" value=<%="#{val}.delete"%> /></td>
-        <td><input type="radio" name="operation" value=<%="#{val}.edit"%> /></td>
-        <%     end %>
-        <%  if name == 'image_url' then%>
-        <td><img src=<%=val%> class='img-thumbnail' style='width:100px; height:100;'></td>
-        <% else %>
-        <td><%= "#{val.to_s}" %></td>
-        <%end%>
-        <%   end %>
-      </tr>
-      <% end %>
-    </table>
-    <input type="submit" value="選択した処理を実行" />
     <hr>
-    </div>
-    <div id="footer"></div>
+    <%# 修正データを表示する アクションはlist %>
+    <form method="post" action="list">
+      <table>
+        <%# テーブルの項目名を取り出して表の項目行を表示する %>
+        <tr>
+          <th>削除</th>
+          <th>修正</th>
+          <% sth.column_names.each do |name| %>
+          <th><%= "#{name}" %></th>
+          <% end %>
+        </tr>
+
+        <%# select文の実行結果を1件ずつrowに取り出し、繰り返し処理する %>
+        <% sth.each do |row| %>
+        <tr>
+          <%# each_with_nameメソッドで値と項目名を1件分ずつ取り出して表示する %>
+          <%   row.each_with_name do |val, name| %>
+          <%     if name == 'id' then %>
+          <%#    valueに選択したidの値の後に処理（.delete, .edit）を結合した文字列を設定する %>
+          <td><input type="radio" name="operation" value=<%="#{val}.delete"%> /></td>
+          <td><input type="radio" name="operation" value=<%="#{val}.edit"%> /></td>
+          <%     end %>
+          <%  if name == 'image_url' then%>
+          <td><img src=<%=val%> class='img-thumbnail' style='width:100px; height:100;'></td>
+          <% else %>
+          <td><%= "#{val.to_s}" %></td>
+          <%end%>
+          <%   end %>
+        </tr>
+        <% end %>
+      </table>
+      <input type="submit" value="選択した処理を実行" />
+      <hr>
+  </div>
+  <div id="footer"></div>
 </body>
 
 </html>
