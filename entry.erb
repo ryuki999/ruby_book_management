@@ -31,14 +31,15 @@
           <th>項目名</th>
           <th>入力データ</th>
         </tr>
-        <% ['id','title','author','page','publish_date','image_url'].each do |name| %>
+        <% ['id','title','author','page','publish_date','image'].each do |name| %>
         <tr>
-          <%if name == 'id' then%>
           <td><%= name %>
+            <%if name == 'id' then%>
           <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" required="required"></td>
-          <% else %>
-          <td><%= name %></>
-          <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" /></td>
+          <% elsif name == 'image'%>
+          <td><img id=<%=name%> name="<%=name%>" src=""></td>
+          <%else%>
+          <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" value="" /></td>
           <% end %>
         </tr>
         <% end %>
@@ -52,6 +53,9 @@
 
   <div id="footer"></div>
   <script type="text/javascript" src="entry.js"></script>
+  <script>
+    query_display();
+  </script>
 </body>
 
 </html>

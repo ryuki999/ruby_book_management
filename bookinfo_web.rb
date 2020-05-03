@@ -105,7 +105,7 @@ server.mount_proc("/retrieve") { |req, res|
     where_data = ""
   else
     # 残った要素を検索条件文字列に変換
-    a.map! {|name| "#{name}='#{req.query[name]}'" }
+    a.map! {|name| "#{name} like '\%#{req.query[name]}\%'" }
     # 要素があるときは、where 句に直す
     #（現状、項目ごとの完全一致のorだけ）
     where_data = "where " +  a.join(' or ')   

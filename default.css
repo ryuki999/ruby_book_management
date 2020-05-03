@@ -1,70 +1,73 @@
 /* bootstrap.css上書き用 */
 
-body{
-    background-color:  #fff8dc;
+body {
+    background-color: #fff8dc;
 }
 
-a > i {
-    color: #3da3e7;    
+a>i {
+    color: #3da3e7;
 }
 
-a:hover > i {
+a:hover>i {
     color: #0984d6;
 }
 
-h1, h2, h3 {
-    border-width : 0 0 0 8px;
-    border-style : solid;
-    padding-left : 0.3em;
-    padding-right : 0.5em;
+h1,
+h2,
+h3 {
+    border-width: 0 0 0 8px;
+    border-style: solid;
+    padding-left: 0.3em;
+    padding-right: 0.5em;
 }
 
 h1 {
     margin: 0em 0em 0em 0em;
-    font-size : 1.2em;
-    color : white;
-    border-color : #fff8dc;
-    background-color : maroon;
+    font-size: 1.2em;
+    color: white;
+    border-color: #fff8dc;
+    background-color: maroon;
     border-width: 0.1em 0em 0.1em 0.1em;
-    padding-left : 0.3em;
-    padding-right : 0.5em;
-    padding-top : 0.2em;
-    padding-bottom : 0.2em;
+    padding-left: 0.3em;
+    padding-right: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
 }
 
 h2 {
-    font-size : 1.2em;
+    font-size: 1.2em;
     color: navy;
-    border-color : navy
+    border-color: navy
 }
 
 h3 {
-    font-size : 1em;
-    color : darkgreen;
-    border-color : darkgreen
+    font-size: 1em;
+    color: darkgreen;
+    border-color: darkgreen
 }
 
 table {
-    border-width : 1px,2px,2px,1px;
-    border : solid;
-    border-color : gray;
+    border-width: 1px, 2px, 2px, 1px;
+    border: solid;
+    border-color: gray;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color : gray;
+    background-color: gray;
 }
 
-th, td {
-    border-width : 1px,0px,0px,1px;
-    border : solid;
-    border-color : gray;
-    padding : 4px;
-    background-color : #ffffef;
+th,
+td {
+    border-width: 1px, 0px, 0px, 1px;
+    border: solid;
+    border-color: gray;
+    padding: 4px;
+    background-color: #ffffef;
 }
 
 th {
-    text-align : center;
-    font-weight : bold;
-    background-color : #a0b8c8;
+    text-align: center;
+    font-weight: bold;
+    background-color: #a0b8c8;
 }
 
 .header {
@@ -77,8 +80,8 @@ th {
 
 .header-top {
     margin: 0em 0em 0em 0em;
-    border-color : #fff8dc;
-    background-color : maroon;
+    border-color: #fff8dc;
+    background-color: maroon;
     height: 30px;
 }
 
@@ -91,5 +94,9 @@ th {
 }
 
 .input-group {
-    width:70%;
+    width: 70%;
+}
+
+.img-thumbnail {
+    cursor: pointer;
 }
