@@ -21,32 +21,11 @@ function query_display() {
   $('#author').val(queryObject['author']);
   $('#page').val(queryObject['page']);
   $('#publish_date').val(queryObject['publish_date']);
-  $('#image').attr('src', queryObject['image_url']);
-}
-
-$(document).on('click', '.img-thumbnail', function () {
-  // data = $('#data_hidden').val();
-  console.log(data);
-  /* イベント発火時の処理 */
-  const id = this.id;
-  console.log(id);
-  for (var i = 0; i < data.items.length; i++) {
-    if (data.items[i].id === id) {
-      // 該当書籍が存在した場合、JSONから値を取得して入力項目のデータを取得する
-      console.log(id);
-      $('#title').val(data.items[i].volumeInfo.title);
-      $('#author').val(data.items[i].volumeInfo.authors[0]);
-      $('#page').val(data.items[i].volumeInfo.pageCount);
-      $('#publish_date').val(data.items[i].volumeInfo.publishedDate);
-      if (
-        data.items[i].volumeInfo !== undefined &&
-        data.items[i].volumeInfo.imageLinks !== undefined &&
-        data.items[i].volumeInfo.imageLinks.smallThumbnail !== undefined
-      ) {
-        $('#image_url').val(data.items[i].volumeInfo.imageLinks.smallThumbnail);
-      } else {
-        $('#image_url').val('./image/no-image-icon.png');
-      }
-    }
+  if (queryObject['image_url'] !== undefined) {
+    $('#image').attr('src', queryObject['image_url']);
+    $('#image_url').val(queryObject['image_url']);
+  } else {
+    $('#image').attr('src', './image/no-image-icon.png');
+    $('#image_url').val('./image/no-image-icon.png');
   }
-});
+}

@@ -51,7 +51,7 @@
         <tr>
           <th>削除</th>
           <th>修正</th>
-          <% ['id','title','author','page','publish_date'].each do |name| %>
+          <% ['id','title','author','page','publish_date','image'].each do |name| %>
           <th><%= name %></th>
           <% end %>
         </tr>
@@ -66,13 +66,15 @@
           <%#    valueに選択したidの値の後に処理（.delete, .edit）を結合した文字列を設定する %>
           <td><input type="radio" name="operation" value=<%="#{row[name]}.delete"%> /></td>
           <td><input type="radio" name="operation" value=<%="#{row[name]}.edit"%> /></td>
+
           <%     end %>
           <td><%= row[name].to_s %></td>
           <%   end %>
+          <td><img src=<%=row['image_url'].to_s%> class='img-thumbnail' style='width:100px; height:100;'></td>
         </tr>
         <% end %>
       </table>
-      <input type="submit" value="選択した処理を実行" />
+      <input type="submit" class="btn btn-secondary" value="選択した処理を実行" />
       <% end %>
       <hr>
   </div>

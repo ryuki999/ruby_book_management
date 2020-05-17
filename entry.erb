@@ -31,22 +31,21 @@
           <th>項目名</th>
           <th>入力データ</th>
         </tr>
-        <% ['id','title','author','page','publish_date','image'].each do |name| %>
+        <% ['id','title','author','page','publish_date','image_url'].each do |name| %>
         <tr>
           <td><%= name %>
-            <%if name == 'id' then%>
+            <% if name == 'id' then %>
           <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" required="required"></td>
-          <% elsif name == 'image'%>
-          <td><img id=<%=name%> name="<%=name%>" src=""></td>
+          <% elsif name == 'image_url'%>
+          <td><img id="image" name="image" src=""><input type="hidden" id="<%=name%>" name="<%=name%>" value="" /></td>
           <%else%>
           <td><input type="text" id="<%=name%>" name="<%=name%>" size="60" value="" /></td>
           <% end %>
         </tr>
         <% end %>
       </table>
-      <input type="submit" value="登録を実行" />
+      <input type="submit" class="btn btn-secondary" value="登録を実行" />
     </form>
-
     <hr>
 
   </div>

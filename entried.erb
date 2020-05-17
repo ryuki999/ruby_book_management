@@ -30,7 +30,11 @@
       <% ['id','title','author','page','publish_date','image_url'].each do |name| %>
       <tr>
         <td><%= name %></td>
+        <% if name == 'image_url' then%>
+        <td><img id="<%=name%>" name="<%=name%>" src="<%= req.query[name].force_encoding("UTF-8") %>"></td>
+        <% else %>
         <td><%= req.query[name].force_encoding("UTF-8") %></td>
+        <%end%>
       </tr>
       <% end %>
     </table>
