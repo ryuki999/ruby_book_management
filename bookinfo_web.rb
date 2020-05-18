@@ -35,22 +35,21 @@ server.config[:MimeTypes]["erb"] = "text/html"
 # "http://localhost:8099/list" で呼び出される
 server.mount_proc("/list") { |req, res|
   p req.query
-  # 'operation'の値の後の（.delete, .edit）で処理を分岐する
-  if /(.*)\.(delete|edit)$/ =~ req.query['operation']
-    target_id = $1 # (.*)にマッチした部分
-    operation = $2 # (delete|edit)にマッチした部分
-    # 選択された処理を実行する画面に移行する
-    # ERBを、ERBHandlerを経由せずに直接呼び出して利用している
-    if operation == 'delete'
-      template = ERB.new( File.read('delete.erb') )
-    elsif operation == 'edit'
-      template = ERB.new( File.read('edit.erb') )
-    end
-    res.body << template.result( binding )
-  else # データが選択されていないなど
+  # queryによって表示するページの変更
+  if !(defined? req.query)
     template = ERB.new( File.read('noselected.erb') )
-    res.body << template.result( binding )
+  elsif !(defined? req.query['edit'])
+    target_id = req.query['edit']
+    template = ERB.new( File.read('edit.erb') )
+  else
+    id_array = []
+    req.query.each { |name, val| 
+        id_array.push("'" + val + "'")
+    }
+    id_array = id_array.join(" or id = ")    # 削除する配列の格納とsql用に改変
+    template = ERB.new( File.read('delete.erb') )
   end
+  res.body << template.result( binding )
 }
 
 # 登録の処理
@@ -148,8 +147,10 @@ server.mount_proc("/delete") { |req, res|
   #dbhを作成し、データベース'bookinfo_sqlite.db'に接続する
   dbh = DBI.connect( 'DBI:SQLite3:bookinfo_sqlite.db' )
   
+  rows = dbh.select_all("select * from bookinfos where id=#{req.query["id_array"]}")
+
   # テーブルからデータを削除する
-  dbh.do("delete from bookinfos where id='#{req.query['id']}';")
+  dbh.do("delete from bookinfos where id=#{req.query['id_array']};")
   
   # データベースとの接続を終了する
   dbh.disconnect
